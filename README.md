@@ -50,6 +50,38 @@ This project was designed to strengthen several critical cybersecurity skills, i
  - Locate the source IP address in the packet details: 10.10.1.4
  - This IP address indicates the network location of the rogue user’s activity.
 
+### Step 2: Correlate to the Host Computer
+1. Open the DHCP Log File:
+ - Review the log structure and focus on identifying events close to the critical time of 12:50 PM when the emails were sent.
+   
+![003c691e7bc9a3be38782c19e0f12af5](https://github.com/user-attachments/assets/e11099b5-2da3-4812-b86a-9cda3cac251b)
+
+2. Narrow the Timeframe:
+ - Since the rogue user had to gain access before 12:50 PM, analyze events occurring just before that time, specifically around 12:11 PM.
+3. Locate the Event at 12:11:27 PM:
+ - Find the event that shows the assignment of the IP address 10.10.1.4 to a host device.
+4. Identify the Host Device:
+ - Confirm that the log entry at 12:11:27 PM assigns the IP address 10.10.1.4 to the host device USER2.
+5. Next Steps:
+ - With the host device identified (USER2), access the security log for that device to determine which employee was logged in at the time. This will reveal the rogue user.
+This streamlined process allows you to efficiently trace the rogue activity to its source using DHCP and security logs.
 Example below.
+
+### Step 3: Analyze the Security Log
+1. Open the Security Log File:
+2. Review the Log Entries:
+ - Note the structure of the logs, paying close attention to the logon/logoff sessions and the associated host computers and users.
+   ![security log screenshot](https://github.com/user-attachments/assets/c971c8f5-ecbc-4543-82b5-7de0af61a4b2)
+
+3. Analyze USER1 Entries:
+ - Observe that the first two log entries are for host computer USER1, with the corresponding user identified as Jane Doe.
+4. Focus on USER2 Entries:
+ - The last two log entries indicate logon/logoff sessions for host computer USER2.
+ - Check the user field for these entries to identify the logged-in user.
+5. Confirm the Rogue User:
+ - The logs reveal that John Doe was logged into USER2 during the time the sensitive emails were sent.
+ - Confirm that the duration of John’s session perfectly overlaps with the timeframe of the rogue activity.
+6. Conclude the Investigation:
+ - John Doe was logged into the host device (USER2) that was used to send the sensitive emails, confirming him as the rogue user.
 
 *Ref 1: Network Diagram*# Network-and-Log-Forensics-Identifying-a-Rogue-User
