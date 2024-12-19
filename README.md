@@ -84,4 +84,14 @@ Example below.
 6. Conclude the Investigation:
  - John Doe was logged into the host device (USER2) that was used to send the sensitive emails, confirming him as the rogue user.
 
+   ### Conclusion
+
+   By connecting the dots between the DHCP logs, security logs, and the timeline of events, we have successfully identified the individual responsible for the unauthorized activity.
+
+   ### Reference
+   1. Codepath Intermediate Cybersecurity Fall 2024 Unit 1 Lab 
+   
 *Ref 1: Network Diagram*# Network-and-Log-Forensics-Identifying-a-Rogue-User
+2. Codepath Intermediate Cybersecurity Fall 2024 Unit 1 Lab 
+     
+      
