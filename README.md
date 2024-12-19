@@ -26,11 +26,29 @@ This project was designed to strengthen several critical cybersecurity skills, i
 - Incident Investigation Workflow:
   - Experience the structured approach of a Blue Team investigation, including evidence collection, analysis, and identification of the responsible user.
 
-## Steps
-drag & drop screenshots here or use imgur and reference them using imgsrc
+## Step 1:  Find the IP Address
+
 ![wireshark 1](https://github.com/user-attachments/assets/e9ea9585-8b24-404a-8023-e8d576d2aceb)
 
-Every screenshot should have some text explaining what the screenshot is about.
+1. Initial Packet Count:
+ - After opening the .pcap file, observe the total packet count (e.g., 60 packets). This represents all captured network traffic.
+2. Applying the First Filter:
+ - Input the filter smtp in the "Apply a display filter..." field and press Enter.
+ - This filter narrows down the results to packets using the Simple Mail Transfer Protocol (SMTP), which is used for email communication.
+   ![smtp 1 ](https://github.com/user-attachments/assets/6f2cec54-ec7f-43de-b88c-9d045428ccf8)
+
+3. Interpreting the Results:
+ - The displayed packets will now only include SMTP traffic. This step is crucial for focusing the analysis on email-related activities within the network.
+4. Refining the Filter Further:
+ - To specifically locate packets containing a "FROM" field, which indicates the sender’s email address, refine the filter by inputting: (smtp contains "FROM")
+ - This further reduces the displayed packets to those containing the keyword "FROM" within the SMTP protocol, allowing you to hone in on messages that may be tied to the rogue user.
+![smtp_from](https://github.com/user-attachments/assets/9020a470-98b0-4617-8521-2844bff744a6)
+ 5. Analyze the Single Packet:
+ - Observe that a single packet remains in the filtered results.
+ - Check the info column to confirm that the packet is associated with the compromised user’s email account.
+6. Identify the Source IP Address:
+ - Locate the source IP address in the packet details: 10.10.1.4
+ - This IP address indicates the network location of the rogue user’s activity.
 
 Example below.
 
